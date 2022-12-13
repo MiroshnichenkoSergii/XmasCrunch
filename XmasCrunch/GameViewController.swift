@@ -12,6 +12,8 @@ import AVFoundation
 
 class GameViewController: UIViewController {
 
+    var level: Level!
+    
     // MARK: Properties
     var scene: GameScene!
     
@@ -48,11 +50,27 @@ class GameViewController: UIViewController {
         skView.presentScene(scene)
         
         // Start the background music.
-        backgroundMusic?.play()
+//        backgroundMusic?.play()
+        
+        level = Level(filename: "Level_0")
+        scene.level = level
+        
+        scene.addTiles()
+
+        beginGame()
     }
     
     // MARK: Action buttons
     @IBAction func shuffleButtonPaped(_ sender: UIButton) {
     }
     
+    func beginGame() {
+      shuffle()
+    }
+
+    func shuffle() {
+      let newItemsX = level.shuffle()
+      scene.addSprites(for: newItemsX)
+    }
+
 }

@@ -10,18 +10,136 @@ import GameplayKit
 
 class GameScene: SKScene {
     
+    var level: Level!
+    
+    let tilesLayer = SKNode()
+    let cropLayer = SKCropNode()
+    let maskLayer = SKNode()
+
+    let tileWidth: CGFloat = 38.0
+    let tileHeight: CGFloat = 38.0
+
+    let gameLayer = SKNode()
+    let itemsXLayer = SKNode()
+    
     required init?(coder aDecoder: NSCoder) {
       fatalError("init(coder) is not used in this app")
     }
     
     override init(size: CGSize) {
-      super.init(size: size)
-      
-      anchorPoint = CGPoint(x: 0.5, y: 0.5)
-      
-      let background = SKSpriteNode(imageNamed: "background")
-      background.size = size
-      addChild(background)
-      
+        super.init(size: size)
+        
+        anchorPoint = CGPoint(x: 0.5, y: 0.5)
+        
+        let background = SKSpriteNode(imageNamed: "background")
+        background.size = size
+        background.colorBlendFactor = 0.15
+        addChild(background)
+        
+        addChild(gameLayer)
+
+        let layerPosition = CGPoint(
+            x: -tileWidth * CGFloat(numColumns) / 2,
+            y: -tileHeight * CGFloat(numRows) / 2)
+
+        tilesLayer.position = layerPosition
+        maskLayer.position = layerPosition
+        cropLayer.maskNode = maskLayer
+        gameLayer.addChild(tilesLayer)
+        gameLayer.addChild(cropLayer)
+        
+        itemsXLayer.position = layerPosition
+        cropLayer.addChild(itemsXLayer)
+    }
+    
+    func addSprites(for itemsX: Set<ItemX>) {
+      for itemX in itemsX {
+        let sprite = SKSpriteNode(imageNamed: itemX.itemXType.spriteName)
+        sprite.size = CGSize(width: tileWidth, height: tileHeight)
+        sprite.position = pointFor(column: itemX.column, row: itemX.row)
+        itemsXLayer.addChild(sprite)
+        itemX.sprite = sprite
+      }
+    }
+
+    private func pointFor(column: Int, row: Int) -> CGPoint {
+      return CGPoint(
+        x: CGFloat(column) * tileWidth + tileWidth / 2,
+        y: CGFloat(row) * tileHeight + tileHeight / 2)
+    }
+
+    func addTiles() {
+        // 1
+        for row in 0..<numRows {
+            for column in 0..<numColumns {
+                if level.tileAt(column: column, row: row) != nil {
+                    let tileNode = SKSpriteNode(imageNamed: "MaskTile")
+                    tileNode.size = CGSize(width: tileWidth, height: tileHeight)
+                    tileNode.position = pointFor(column: column, row: row)
+                    maskLayer.addChild(tileNode)
+                }
+            }
+        }
+        
+        // 2
+        for row in 0...numRows {
+            for column in 0...numColumns {
+                let topLeft     = (column > 0) && (row < numRows)
+                && level.tileAt(column: column - 1, row: row) != nil
+                let bottomLeft  = (column > 0) && (row > 0)
+                && level.tileAt(column: column - 1, row: row - 1) != nil
+                let topRight    = (column < numColumns) && (row < numRows)
+                && level.tileAt(column: column, row: row) != nil
+                let bottomRight = (column < numColumns) && (row > 0)
+                && level.tileAt(column: column, row: row - 1) != nil
+                
+                let value = tile(with: (topLeft, topRight, bottomLeft, bottomRight))
+                
+                // Values 0 (no tiles) not drawn.
+                if value != 0 {
+                    let name = String(format: "Tile_%ld", value)
+                    let tileNode = SKSpriteNode(imageNamed: name)
+                    tileNode.size = CGSize(width: tileWidth, height: tileHeight)
+                    var point = pointFor(column: column, row: row)
+                    point.x -= tileWidth / 2
+                    point.y -= tileHeight / 2
+                    tileNode.position = point
+                    tilesLayer.addChild(tileNode)
+                }
+            }
+        }
+    }
+
+    private func tile(with config: (Bool, Bool, Bool, Bool)) -> Int {
+        switch config {
+            case (true, false, false, false):
+                return 1
+            case (false, true, false, false):
+                return 2
+            case (true, true, false, false):
+                return 3
+            case (false, false, true, false):
+                return 4
+            case (true, false, true, false):
+                return 5
+            case (true, true, true, false):
+                return 7
+            case (false, false, false, true):
+                return 8
+            case (false, true, false, true):
+                return 10
+            case (true, true, false, true):
+                return 11
+            case (false, false, true, true):
+                return 12
+            case (true, false, true, true):
+                return 13
+            case (false, true, true, true):
+                return 14
+            case (true, true, true, true):
+                return 15
+            default:
+                return 0
+        }
     }
 }
