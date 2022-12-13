@@ -8,42 +8,51 @@
 import UIKit
 import SpriteKit
 import GameplayKit
+import AVFoundation
 
 class GameViewController: UIViewController {
 
+    // MARK: Properties
+    var scene: GameScene!
+    
+    lazy var backgroundMusic: AVAudioPlayer? = {
+      guard let url = Bundle.main.url(forResource: "mainTheme", withExtension: "mp3") else {
+        return nil
+      }
+      do {
+        let player = try AVAudioPlayer(contentsOf: url)
+        player.numberOfLoops = -1
+        return player
+      } catch {
+        return nil
+      }
+    }()
+    
+    // MARK: Outlets
+    @IBOutlet weak var targetLabel: UILabel!
+    @IBOutlet weak var movesLabel: UILabel!
+    @IBOutlet weak var scoreLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if let view = self.view as! SKView? {
-            // Load the SKScene from 'GameScene.sks'
-            if let scene = SKScene(fileNamed: "GameScene") {
-                // Set the scale mode to scale to fit the window
-                scene.scaleMode = .aspectFill
-                
-                // Present the scene
-                view.presentScene(scene)
-            }
-            
-            view.ignoresSiblingOrder = true
-            
-            view.showsFPS = true
-            view.showsNodeCount = true
-        }
+        // Configure the view
+        let skView = view as! SKView
+        skView.isMultipleTouchEnabled = false
+        
+        // Create and configure the scene.
+        scene = GameScene(size: skView.bounds.size)
+        scene.scaleMode = .aspectFill
+        
+        // Present the scene.
+        skView.presentScene(scene)
+        
+        // Start the background music.
+        backgroundMusic?.play()
     }
-
-    override var shouldAutorotate: Bool {
-        return true
+    
+    // MARK: Action buttons
+    @IBAction func shuffleButtonPaped(_ sender: UIButton) {
     }
-
-    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
-        if UIDevice.current.userInterfaceIdiom == .phone {
-            return .allButUpsideDown
-        } else {
-            return .all
-        }
-    }
-
-    override var prefersStatusBarHidden: Bool {
-        return true
-    }
+    
 }
