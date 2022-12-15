@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		EFB625EF2948C5A500BDBA19 /* Grid.atlas in Resources */ = {isa = PBXBuildFile; fileRef = EFB625EE2948C5A500BDBA19 /* Grid.atlas */; };
 		EFB625F1294B2E7900BDBA19 /* Swap.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFB625F0294B2E7800BDBA19 /* Swap.swift */; };
+		EFB625F3294B3B9300BDBA19 /* Chain.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFB625F2294B3B9300BDBA19 /* Chain.swift */; };
 		EFE945202943444500FEEE73 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFE9451F2943444500FEEE73 /* AppDelegate.swift */; };
 		EFE945262943444500FEEE73 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFE945252943444500FEEE73 /* GameScene.swift */; };
 		EFE945282943444500FEEE73 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFE945272943444500FEEE73 /* GameViewController.swift */; };
@@ -38,6 +39,7 @@
 /* Begin PBXFileReference section */
 		EFB625EE2948C5A500BDBA19 /* Grid.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Grid.atlas; sourceTree = "<group>"; };
 		EFB625F0294B2E7800BDBA19 /* Swap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Swap.swift; sourceTree = "<group>"; };
+		EFB625F2294B3B9300BDBA19 /* Chain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chain.swift; sourceTree = "<group>"; };
 		EFE9451C2943444500FEEE73 /* XmasCrunch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XmasCrunch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EFE9451F2943444500FEEE73 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EFE945252943444500FEEE73 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
@@ -104,6 +106,7 @@
 				EFE9455B2948AF0600FEEE73 /* ItemX.swift */,
 				EFE9455D2948B49100FEEE73 /* Level.swift */,
 				EFB625F0294B2E7800BDBA19 /* Swap.swift */,
+				EFB625F2294B3B9300BDBA19 /* Chain.swift */,
 				EFE9452C2943444800FEEE73 /* Assets.xcassets */,
 				EFE945292943444500FEEE73 /* Main.storyboard */,
 				EFE9452E2943444800FEEE73 /* LaunchScreen.storyboard */,
@@ -231,6 +234,7 @@
 				EFE9455C2948AF0600FEEE73 /* ItemX.swift in Sources */,
 				EFE945282943444500FEEE73 /* GameViewController.swift in Sources */,
 				EFE945202943444500FEEE73 /* AppDelegate.swift in Sources */,
+				EFB625F3294B3B9300BDBA19 /* Chain.swift in Sources */,
 				EFE945552948AAFE00FEEE73 /* Tile.swift in Sources */,
 				EFE9455E2948B49100FEEE73 /* Level.swift in Sources */,
 				EFE945572948AB4000FEEE73 /* Array2D.swift in Sources */,
