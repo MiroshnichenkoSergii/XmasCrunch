@@ -48,6 +48,7 @@ class GameScene: SKScene {
         addChild(background)
         
         addChild(gameLayer)
+        gameLayer.isHidden = true
 
         let layerPosition = CGPoint(
             x: -tileWidth * CGFloat(numColumns) / 2,
@@ -122,6 +123,20 @@ class GameScene: SKScene {
             sprite.position = pointFor(column: itemX.column, row: itemX.row)
             itemsXLayer.addChild(sprite)
             itemX.sprite = sprite
+            
+            // Give each item sprite a small, random delay. Then fade them in.
+            sprite.alpha = 0
+            sprite.xScale = 0.5
+            sprite.yScale = 0.5
+            
+            sprite.run(
+                SKAction.sequence([
+                    SKAction.wait(forDuration: 0.25, withRange: 0.5),
+                    SKAction.group([
+                        SKAction.fadeIn(withDuration: 0.25),
+                        SKAction.scale(to: 1.0, duration: 0.25)
+                    ])
+                ]))
         }
     }
     
@@ -299,6 +314,26 @@ class GameScene: SKScene {
         let moveAction = SKAction.move(by: CGVector(dx: 0, dy: 3), duration: 0.7)
         moveAction.timingMode = .easeOut
         scoreLabel.run(SKAction.sequence([moveAction, SKAction.removeFromParent()]))
+    }
+    
+    func animateGameOver(_ completion: @escaping () -> Void) {
+        let action = SKAction.move(by: CGVector(dx: 0, dy: -size.height), duration: 0.3)
+        action.timingMode = .easeIn
+        gameLayer.run(action, completion: completion)
+    }
+    
+    func animateBeginGame(_ completion: @escaping () -> Void) {
+        gameLayer.isHidden = false
+        gameLayer.position = CGPoint(x: 0, y: size.height)
+        
+        let action = SKAction.move(by: CGVector(dx: 0, dy: -size.height), duration: 0.3)
+        action.timingMode = .easeOut
+        
+        gameLayer.run(action, completion: completion)
+    }
+    
+    func removeAllItemsXSprites() {
+        itemsXLayer.removeAllChildren()
     }
 
     func addTiles() {

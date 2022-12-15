@@ -130,6 +130,7 @@
                         <outlet property="gameOverPanel" destination="iRr-gs-TTC" id="T9H-1I-hoU"/>
                         <outlet property="movesLabel" destination="z00-Pq-ZGn" id="8vA-oz-704"/>
                         <outlet property="scoreLabel" destination="xU2-d6-MDb" id="mXE-Ua-dx4"/>
+                        <outlet property="shuffleButton" destination="gYC-SA-ewE" id="HLo-jk-wC0"/>
                         <outlet property="targetLabel" destination="wrQ-IC-jRf" id="kly-hy-MtY"/>
                     </connections>
                 </viewController>

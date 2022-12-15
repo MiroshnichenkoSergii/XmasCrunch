@@ -10,6 +10,8 @@ import Foundation
 let numColumns = 9
 let numRows = 9
 
+let numLevels = 5 // Excluding level 0
+
 class Level {
     
     var targetScore = 0
