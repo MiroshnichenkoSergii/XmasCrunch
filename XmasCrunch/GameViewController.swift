@@ -65,12 +65,21 @@ class GameViewController: UIViewController {
     }
     
     func beginGame() {
-      shuffle()
+        shuffle()
     }
-
+    
     func shuffle() {
-      let newItemsX = level.shuffle()
-      scene.addSprites(for: newItemsX)
+        let newItemsX = level.shuffle()
+        scene.addSprites(for: newItemsX)
+    }
+    
+    func handleSwipe(_ swap: Swap) {
+        view.isUserInteractionEnabled = false
+        
+        level.performSwap(swap)
+        scene.animate(swap) {
+            self.view.isUserInteractionEnabled = true
+        }
     }
 
 }
