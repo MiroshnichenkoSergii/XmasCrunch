@@ -172,6 +172,7 @@ class Level {
                 
                 if let itemX = itemsX[column, row] {
                     let matchType = itemX.itemXType
+                    
                     if itemsX[column + 1, row]?.itemXType == matchType &&
                         itemsX[column + 2, row]?.itemXType == matchType {
                         
@@ -187,6 +188,34 @@ class Level {
                     }
                 }
                 column += 1
+            }
+        }
+        return set
+    }
+    
+    private func detectVerticalMatches() -> Set<Chain> {
+        var set: Set<Chain> = []
+        
+        for column in 0..<numColumns {
+            var row = 0
+            
+            while row < numRows-2 {
+                if let itemX = itemsX[column, row] {
+                    let matchType = itemX.itemXType
+                    
+                    if itemsX[column, row + 1]?.itemXType == matchType &&
+                        itemsX[column, row + 2]?.itemXType == matchType {
+                        let chain = Chain(chainType: .vertical)
+                        repeat {
+                            chain.add(itemX: itemsX[column, row]!)
+                            row += 1
+                        } while row < numRows && itemsX[column, row]?.itemXType == matchType
+                        
+                        set.insert(chain)
+                        continue
+                    }
+                }
+                row += 1
             }
         }
         return set
