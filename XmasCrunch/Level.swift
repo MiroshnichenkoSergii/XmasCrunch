@@ -238,6 +238,31 @@ class Level {
             }
         }
     }
+    
+    func fillHoles() -> [[ItemX]] {
+        var columns: [[ItemX]] = []
+        
+        for column in 0..<numColumns {
+            var array: [ItemX] = []
+            for row in 0..<numRows {
+                if tiles[column, row] != nil && itemsX[column, row] == nil {
+                    for lookup in (row + 1)..<numRows {
+                        if let itemX = itemsX[column, lookup] {
+                            itemsX[column, lookup] = nil
+                            itemsX[column, row] = itemX
+                            itemX.row = row
+                            array.append(itemX)
+                            break
+                        }
+                    }
+                }
+            }
+            if !array.isEmpty {
+                columns.append(array)
+            }
+        }
+        return columns
+    }
 
     //Right Description
     private func createInitialItemsX() -> Set<ItemX> {
