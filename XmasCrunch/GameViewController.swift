@@ -46,6 +46,8 @@ class GameViewController: UIViewController {
         scene = GameScene(size: skView.bounds.size)
         scene.scaleMode = .aspectFill
         
+        scene.swipeHandler = handleSwipe
+        
         // Present the scene.
         skView.presentScene(scene)
         
