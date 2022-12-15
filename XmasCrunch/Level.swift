@@ -157,6 +157,10 @@ class Level {
         swap.itemXA.column = columnB
         swap.itemXA.row = rowB
     }
+    
+    func isPossibleSwap(_ swap: Swap) -> Bool {
+        return possibleSwaps.contains(swap)
+    }
 
     //Right Description
     private func createInitialItemsX() -> Set<ItemX> {
