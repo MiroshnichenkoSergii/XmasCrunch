@@ -19,6 +19,8 @@ class GameViewController: UIViewController {
     var movesLeft = 0
     var score = 0
     
+    var tapGestureRecognizer: UITapGestureRecognizer!
+    
     lazy var backgroundMusic: AVAudioPlayer? = {
       guard let url = Bundle.main.url(forResource: "mainTheme", withExtension: "mp3") else {
         return nil
@@ -36,6 +38,7 @@ class GameViewController: UIViewController {
     @IBOutlet weak var targetLabel: UILabel!
     @IBOutlet weak var movesLabel: UILabel!
     @IBOutlet weak var scoreLabel: UILabel!
+    @IBOutlet weak var gameOverPanel: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,6 +52,7 @@ class GameViewController: UIViewController {
         scene.scaleMode = .aspectFill
         
         scene.swipeHandler = handleSwipe
+        gameOverPanel.isHidden = true
         
         // Present the scene.
         skView.presentScene(scene)
@@ -136,6 +140,32 @@ class GameViewController: UIViewController {
     func decrementMoves() {
         movesLeft -= 1
         updateLabels()
+        
+        if score >= level.targetScore {
+          gameOverPanel.image = UIImage(named: "LevelComplete")
+          showGameOver()
+        } else if movesLeft == 0 {
+          gameOverPanel.image = UIImage(named: "GameOver")
+          showGameOver()
+        }
+    }
+
+    func showGameOver() {
+        gameOverPanel.isHidden = false
+        scene.isUserInteractionEnabled = false
+        
+        self.tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(hideGameOver))
+        self.view.addGestureRecognizer(self.tapGestureRecognizer)
+    }
+
+    @objc func hideGameOver() {
+        view.removeGestureRecognizer(tapGestureRecognizer)
+        tapGestureRecognizer = nil
+        
+        gameOverPanel.isHidden = true
+        scene.isUserInteractionEnabled = true
+        
+        beginGame()
     }
 
 }
