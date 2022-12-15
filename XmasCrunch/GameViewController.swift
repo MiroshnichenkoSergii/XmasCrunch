@@ -93,7 +93,10 @@ class GameViewController: UIViewController {
         scene.animateMatchedItemsX(for: chains) {
             let columns = self.level.fillHoles()
             self.scene.animateFallingItemsX(in: columns) {
-                self.view.isUserInteractionEnabled = true
+                let columns = self.level.topUpItemsX()
+                self.scene.animateNewItemsX(in: columns) {
+                    self.view.isUserInteractionEnabled = true
+                }
             }
         }
     }

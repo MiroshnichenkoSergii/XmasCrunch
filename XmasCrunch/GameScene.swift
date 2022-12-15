@@ -239,6 +239,43 @@ class GameScene: SKScene {
         
         run(SKAction.wait(forDuration: longestDuration), completion: completion)
     }
+    
+    func animateNewItemsX(in columns: [[ItemX]], completion: @escaping () -> Void) {
+        var longestDuration: TimeInterval = 0
+        
+        for array in columns {
+            let startRow = array[0].row + 1
+            
+            for (index, itemX) in array.enumerated() {
+                
+                let sprite = SKSpriteNode(imageNamed: itemX.itemXType.spriteName)
+                sprite.size = CGSize(width: tileWidth, height: tileHeight)
+                sprite.position = pointFor(column: itemX.column, row: startRow)
+                
+                itemsXLayer.addChild(sprite)
+                itemX.sprite = sprite
+                
+                let delay = 0.1 + 0.2 * TimeInterval(array.count - index - 1)
+                let duration = TimeInterval(startRow - itemX.row) * 0.1
+                longestDuration = max(longestDuration, duration + delay)
+                
+                let newPosition = pointFor(column: itemX.column, row: itemX.row)
+                let moveAction = SKAction.move(to: newPosition, duration: duration)
+                moveAction.timingMode = .easeOut
+                
+                sprite.alpha = 0
+                sprite.run(
+                    SKAction.sequence([
+                        SKAction.wait(forDuration: delay),
+                        SKAction.group([
+                            SKAction.fadeIn(withDuration: 0.05),
+                            moveAction,
+                            addItemSound])
+                    ]))
+            }
+        }
+        run(SKAction.wait(forDuration: longestDuration), completion: completion)
+    }
 
     func addTiles() {
         for row in 0..<numRows {
