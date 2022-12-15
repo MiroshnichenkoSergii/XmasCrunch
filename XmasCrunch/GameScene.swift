@@ -198,6 +198,7 @@ class GameScene: SKScene {
     
     func animateMatchedItemsX(for chains: Set<Chain>, completion: @escaping () -> Void) {
         for chain in chains {
+            animateScore(for: chain)
             for itemX in chain.itemsX {
                 if let sprite = itemX.sprite {
                     if sprite.action(forKey: "removing") == nil {
@@ -275,6 +276,27 @@ class GameScene: SKScene {
             }
         }
         run(SKAction.wait(forDuration: longestDuration), completion: completion)
+    }
+    
+    func animateScore(for chain: Chain) {
+        // Figure out what the midpoint of the chain is.
+        let firstSprite = chain.firstItemX().sprite!
+        let lastSprite = chain.lastItemX().sprite!
+        let centerPosition = CGPoint(
+            x: (firstSprite.position.x + lastSprite.position.x)/2,
+            y: (firstSprite.position.y + lastSprite.position.y)/2 - 8)
+        
+        // Add a label for the score that slowly floats up.
+        let scoreLabel = SKLabelNode(fontNamed: "GillSans-BoldItalic")
+        scoreLabel.fontSize = 16
+        scoreLabel.text = String(format: "%ld", chain.score)
+        scoreLabel.position = centerPosition
+        scoreLabel.zPosition = 300
+        itemsXLayer.addChild(scoreLabel)
+        
+        let moveAction = SKAction.move(by: CGVector(dx: 0, dy: 3), duration: 0.7)
+        moveAction.timingMode = .easeOut
+        scoreLabel.run(SKAction.sequence([moveAction, SKAction.removeFromParent()]))
     }
 
     func addTiles() {
