@@ -154,6 +154,7 @@ class GameScene: SKScene {
         }
     }
     
+    //MARK: - Animating
     func animate(_ swap: Swap, completion: @escaping () -> Void) {
         let spriteA = swap.itemXA.sprite!
         let spriteB = swap.itemXB.sprite!
@@ -193,6 +194,23 @@ class GameScene: SKScene {
         spriteB.run(SKAction.sequence([moveB, moveA]))
         
         run(invalidSwapSound)
+    }
+    
+    func animateMatchedItemsX(for chains: Set<Chain>, completion: @escaping () -> Void) {
+        for chain in chains {
+            for itemX in chain.itemsX {
+                if let sprite = itemX.sprite {
+                    if sprite.action(forKey: "removing") == nil {
+                        let scaleAction = SKAction.scale(to: 0.1, duration: 0.3)
+                        scaleAction.timingMode = .easeOut
+                        sprite.run(SKAction.sequence([scaleAction, SKAction.removeFromParent()]),
+                                   withKey: "removing")
+                    }
+                }
+            }
+        }
+        run(matchSound)
+        run(SKAction.wait(forDuration: 0.3), completion: completion)
     }
 
     func addTiles() {
