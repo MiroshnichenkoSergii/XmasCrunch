@@ -67,6 +67,43 @@ class GameScene: SKScene {
         }
     }
     
+    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+        
+        guard swipeFromColumn != nil else { return }
+        guard let touch = touches.first else { return }
+        
+        let location = touch.location(in: itemsXLayer)
+        
+        let (success, column, row) = convertPoint(location)
+        if success {
+            var horizontalDelta = 0, verticalDelta = 0
+            if column < swipeFromColumn! {          // swipe left
+                horizontalDelta = -1
+            } else if column > swipeFromColumn! {   // swipe right
+                horizontalDelta = 1
+            } else if row < swipeFromRow! {         // swipe down
+                verticalDelta = -1
+            } else if row > swipeFromRow! {         // swipe up
+                verticalDelta = 1
+            }
+            
+            if horizontalDelta != 0 || verticalDelta != 0 {
+                trySwap(horizontalDelta: horizontalDelta, verticalDelta: verticalDelta)
+                
+                swipeFromColumn = nil
+            }
+        }
+    }
+    
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        swipeFromColumn = nil
+        swipeFromRow = nil
+    }
+    
+    override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
+        touchesEnded(touches, with: event)
+    }
+    
     //MARK: - Functions
     func addSprites(for itemsX: Set<ItemX>) {
         for itemX in itemsX {
@@ -90,6 +127,19 @@ class GameScene: SKScene {
             return (true, Int(point.x / tileWidth), Int(point.y / tileHeight))
         } else {
             return (false, 0, 0)  // invalid location
+        }
+    }
+    
+    private func trySwap(horizontalDelta: Int, verticalDelta: Int) {
+        let toColumn = swipeFromColumn! + horizontalDelta
+        let toRow = swipeFromRow! + verticalDelta
+        
+        guard toColumn >= 0 && toColumn < numColumns else { return }
+        guard toRow >= 0 && toRow < numRows else { return }
+        
+        if let toItemX = level.itemX(atColumn: toColumn, row: toRow),
+           let fromItemX = level.itemX(atColumn: swipeFromColumn!, row: swipeFromRow!) {
+            print("*** swapping \(fromItemX) with \(toItemX)")
         }
     }
 
