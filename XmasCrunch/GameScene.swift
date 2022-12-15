@@ -55,6 +55,18 @@ class GameScene: SKScene {
         cropLayer.addChild(itemsXLayer)
     }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        guard let touch = touches.first else { return }
+        let location = touch.location(in: itemsXLayer)
+        let (success, column, row) = convertPoint(location)
+        if success {
+            if let itemX = level.itemX(atColumn: column, row: row) {
+                swipeFromColumn = column
+                swipeFromRow = row
+            }
+        }
+    }
+    
     //MARK: - Functions
     func addSprites(for itemsX: Set<ItemX>) {
         for itemX in itemsX {
