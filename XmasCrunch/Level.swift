@@ -19,7 +19,8 @@ class Level {
     private var tiles = Array2D<Tile>(columns: numColumns, rows: numRows)
     
     private var possibleSwaps: Set<Swap> = []
-    
+    private var comboMultiplier = 0
+
     func itemX(atColumn column: Int, row: Int) -> ItemX? {
         precondition(column >= 0 && column < numColumns)
         precondition(row >= 0 && row < numRows)
@@ -333,8 +334,13 @@ class Level {
     private func calculateScores(for chains: Set<Chain>) {
         // 3-chain is 50 pts, 4-chain is 100, 5-chain is 200, and so on
         for chain in chains {
-            chain.score = 50 * (chain.length - 2)
+            chain.score = 50 * (chain.length - 2) * comboMultiplier
+            comboMultiplier += 1
         }
+    }
+    
+    func resetComboMultiplier() {
+        comboMultiplier = 1
     }
 
     init(filename: String) {

@@ -61,6 +61,8 @@ class GameScene: SKScene {
         
         itemsXLayer.position = layerPosition
         cropLayer.addChild(itemsXLayer)
+        
+        let _ = SKLabelNode(fontNamed: "GillSans-BoldItalic")
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

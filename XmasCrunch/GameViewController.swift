@@ -73,6 +73,8 @@ class GameViewController: UIViewController {
         score = 0
         updateLabels()
 
+        level.resetComboMultiplier()
+
         shuffle()
     }
     
