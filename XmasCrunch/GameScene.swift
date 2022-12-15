@@ -12,6 +12,7 @@ class GameScene: SKScene {
     
     //MARK: - Properties
     var level: Level!
+    var swipeHandler: ((Swap) -> Void)?
     
     let tilesLayer = SKNode()
     let cropLayer = SKCropNode()
@@ -139,7 +140,10 @@ class GameScene: SKScene {
         
         if let toItemX = level.itemX(atColumn: toColumn, row: toRow),
            let fromItemX = level.itemX(atColumn: swipeFromColumn!, row: swipeFromRow!) {
-            print("*** swapping \(fromItemX) with \(toItemX)")
+            if let handler = swipeHandler {
+                let swap = Swap(itemXA: fromItemX, itemXB: toItemX)
+                handler(swap)
+            }
         }
     }
 
