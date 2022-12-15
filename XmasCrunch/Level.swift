@@ -53,7 +53,16 @@ class Level {
             for column in 0..<numColumns {
                 
                 if tiles[column, row] != nil {
-                    let itemXType = ItemXType.random()
+                    var itemXType: ItemXType
+                    
+                    repeat {
+                        itemXType = ItemXType.random()
+                    } while (column >= 2 &&
+                             itemsX[column - 1, row]?.itemXType == itemXType &&
+                             itemsX[column - 2, row]?.itemXType == itemXType)
+                    || (row >= 2 &&
+                        itemsX[column, row - 1]?.itemXType == itemXType &&
+                        itemsX[column, row - 2]?.itemXType == itemXType)
                     
                     let itemX = ItemX(column: column, row: row, itemXType: itemXType)
                     itemsX[column, row] = itemX
