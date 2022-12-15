@@ -142,10 +142,10 @@ class GameViewController: UIViewController {
         updateLabels()
         
         if score >= level.targetScore {
-          gameOverPanel.image = UIImage(named: "LevelComplete")
+          gameOverPanel.image = UIImage(named: "nextLevel")
           showGameOver()
         } else if movesLeft == 0 {
-          gameOverPanel.image = UIImage(named: "GameOver")
+          gameOverPanel.image = UIImage(named: "gameOver")
           showGameOver()
         }
     }

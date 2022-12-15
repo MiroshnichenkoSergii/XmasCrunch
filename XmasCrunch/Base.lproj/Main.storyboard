@@ -107,10 +107,10 @@
                                     <action selector="shuffleButtonPaped:" destination="BV1-FR-VrT" eventType="touchUpInside" id="QXO-KE-RM1"/>
                                 </connections>
                             </button>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="iRr-gs-TTC">
-                                <rect key="frame" x="0.0" y="328" width="414" height="250"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="iRr-gs-TTC">
+                                <rect key="frame" x="0.0" y="340.5" width="414" height="225"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="250" id="iqT-FO-yGD"/>
+                                    <constraint firstAttribute="height" constant="225" id="iqT-FO-yGD"/>
                                 </constraints>
                             </imageView>
                         </subviews>
