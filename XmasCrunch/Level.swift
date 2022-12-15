@@ -15,6 +15,8 @@ class Level {
     private var itemsX = Array2D<ItemX>(columns: numColumns, rows: numRows)
     private var tiles = Array2D<Tile>(columns: numColumns, rows: numRows)
     
+    private var possibleSwaps: Set<Swap> = []
+    
     func itemX(atColumn column: Int, row: Int) -> ItemX? {
         precondition(column >= 0 && column < numColumns)
         precondition(row >= 0 && row < numRows)
