@@ -54,7 +54,7 @@ class GameViewController: UIViewController {
         // Start the background music.
 //        backgroundMusic?.play()
         
-        level = Level(filename: "Level_0")
+        level = Level(filename: "Level_2")
         scene.level = level
         
         scene.addTiles()

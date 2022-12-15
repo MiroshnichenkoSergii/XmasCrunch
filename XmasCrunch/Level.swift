@@ -263,6 +263,37 @@ class Level {
         }
         return columns
     }
+    
+    func topUpItemsX() -> [[ItemX]] {
+        var columns: [[ItemX]] = []
+        var itemXType: ItemXType = .unknown
+        
+        for column in 0..<numColumns {
+            var array: [ItemX] = []
+            var row = numRows - 1
+            
+            while row >= 0 && itemsX[column, row] == nil {
+                if tiles[column, row] != nil {
+                    var newItemXType: ItemXType
+                    
+                    repeat {
+                        newItemXType = ItemXType.random()
+                    } while newItemXType == itemXType
+                    itemXType = newItemXType
+                    
+                    let itemX = ItemX(column: column, row: row, itemXType: itemXType)
+                    
+                    itemsX[column, row] = itemX
+                    array.append(itemX)
+                }
+                row -= 1
+            }
+            if !array.isEmpty {
+                columns.append(array)
+            }
+        }
+        return columns
+    }
 
     //Right Description
     private func createInitialItemsX() -> Set<ItemX> {
