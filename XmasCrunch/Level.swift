@@ -29,7 +29,118 @@ class Level {
     }
     
     func shuffle() -> Set<ItemX> {
-        return createInitialItemsX()
+        var set: Set<ItemX>
+        repeat {
+            set = createInitialItemsX()
+            detectPossibleSwaps()
+            print("possible swaps: \(possibleSwaps)")
+        } while possibleSwaps.count == 0
+        
+        return set
+    }
+    
+    func detectPossibleSwaps() {
+        var set: Set<Swap> = []
+        
+        for row in 0..<numRows {
+            for column in 0..<numColumns {
+                if let itemX = itemsX[column, row] {
+                    
+                    // Have an item in this spot? If there is no tile, there is no item.
+                    if column < numColumns - 1,
+                       let other = itemsX[column + 1, row] {
+                        // Swap them
+                        itemsX[column, row] = other
+                        itemsX[column + 1, row] = itemX
+                        
+                        // Is either item now part of a chain?
+                        if hasChain(atColumn: column + 1, row: row) ||
+                            hasChain(atColumn: column, row: row) {
+                            set.insert(Swap(itemXA: itemX, itemXB: other))
+                        }
+                        
+                        // Swap them back
+                        itemsX[column, row] = itemX
+                        itemsX[column + 1, row] = other
+                    }
+
+                    if row < numRows - 1,
+                       let other = itemsX[column, row + 1] {
+                        itemsX[column, row] = other
+                        itemsX[column, row + 1] = itemX
+                        
+                        // Is either item now part of a chain?
+                        if hasChain(atColumn: column, row: row + 1) ||
+                            hasChain(atColumn: column, row: row) {
+                            set.insert(Swap(itemXA: itemX, itemXB: other))
+                        }
+                        
+                        // Swap them back
+                        itemsX[column, row] = itemX
+                        itemsX[column, row + 1] = other
+                    }
+                }
+                else if column == numColumns - 1, let itemX = itemsX[column, row] {
+                    if row < numRows - 1,
+                       let other = itemsX[column, row + 1] {
+                        itemsX[column, row] = other
+                        itemsX[column, row + 1] = itemX
+                        
+                        // Is either item now part of a chain?
+                        if hasChain(atColumn: column, row: row + 1) ||
+                            hasChain(atColumn: column, row: row) {
+                            set.insert(Swap(itemXA: itemX, itemXB: other))
+                        }
+                        
+                        // Swap them back
+                        itemsX[column, row] = itemX
+                        itemsX[column, row + 1] = other
+                    }
+                }
+            }
+        }
+        
+        possibleSwaps = set
+    }
+    
+    private func hasChain(atColumn column: Int, row: Int) -> Bool {
+        let itemXType = itemsX[column, row]!.itemXType
+        
+        // Horizontal chain check
+        var horizontalLength = 1
+        
+        // Left
+        var i = column - 1
+        while i >= 0 && itemsX[i, row]?.itemXType == itemXType {
+            i -= 1
+            horizontalLength += 1
+        }
+        
+        // Right
+        i = column + 1
+        while i < numColumns && itemsX[i, row]?.itemXType == itemXType {
+            i += 1
+            horizontalLength += 1
+        }
+        if horizontalLength >= 3 { return true }
+        
+        // Vertical chain check
+        var verticalLength = 1
+        
+        // Down
+        i = row - 1
+        while i >= 0 && itemsX[column, i]?.itemXType == itemXType {
+            i -= 1
+            verticalLength += 1
+        }
+        
+        // Up
+        i = row + 1
+        while i < numRows && itemsX[column, i]?.itemXType == itemXType {
+            i += 1
+            verticalLength += 1
+        }
+        return verticalLength >= 3
     }
     
     func performSwap(_ swap: Swap) {
