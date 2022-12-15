@@ -161,6 +161,36 @@ class Level {
     func isPossibleSwap(_ swap: Swap) -> Bool {
         return possibleSwaps.contains(swap)
     }
+    
+    private func detectHorizontalMatches() -> Set<Chain> {
+        var set: Set<Chain> = []
+        
+        for row in 0..<numRows {
+            var column = 0
+            
+            while column < numColumns-2 {
+                
+                if let itemX = itemsX[column, row] {
+                    let matchType = itemX.itemXType
+                    if itemsX[column + 1, row]?.itemXType == matchType &&
+                        itemsX[column + 2, row]?.itemXType == matchType {
+                        
+                        let chain = Chain(chainType: .horizontal)
+                        
+                        repeat {
+                            chain.add(itemX: itemsX[column, row]!)
+                            column += 1
+                        } while column < numColumns && itemsX[column, row]?.itemXType == matchType
+                        
+                        set.insert(chain)
+                        continue
+                    }
+                }
+                column += 1
+            }
+        }
+        return set
+    }
 
     //Right Description
     private func createInitialItemsX() -> Set<ItemX> {
