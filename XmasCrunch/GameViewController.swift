@@ -90,9 +90,11 @@ class GameViewController: UIViewController {
     
     func handleMatches() {
         let chains = level.removeMatches()
-        
         scene.animateMatchedItemsX(for: chains) {
-            self.view.isUserInteractionEnabled = true
+            let columns = self.level.fillHoles()
+            self.scene.animateFallingItemsX(in: columns) {
+                self.view.isUserInteractionEnabled = true
+            }
         }
     }
 
