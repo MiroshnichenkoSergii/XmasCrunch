@@ -10,6 +10,7 @@ import GameplayKit
 
 class GameScene: SKScene {
     
+    //MARK: - Properties
     var level: Level!
     
     let tilesLayer = SKNode()
@@ -22,8 +23,11 @@ class GameScene: SKScene {
     let gameLayer = SKNode()
     let itemsXLayer = SKNode()
     
+    private var swipeFromColumn: Int?
+    private var swipeFromRow: Int?
+    
     required init?(coder aDecoder: NSCoder) {
-      fatalError("init(coder) is not used in this app")
+        fatalError("init(coder) is not used in this app")
     }
     
     override init(size: CGSize) {
@@ -31,9 +35,8 @@ class GameScene: SKScene {
         
         anchorPoint = CGPoint(x: 0.5, y: 0.5)
         
-        let background = SKSpriteNode(imageNamed: "background")
-        background.size = size
-        background.colorBlendFactor = 0.15
+        let texture = SKTexture(imageNamed: "background")
+        let background = SKSpriteNode(texture: texture, glowRadius: 6.0, size: size)
         addChild(background)
         
         addChild(gameLayer)
@@ -52,24 +55,33 @@ class GameScene: SKScene {
         cropLayer.addChild(itemsXLayer)
     }
     
+    //MARK: - Functions
     func addSprites(for itemsX: Set<ItemX>) {
-      for itemX in itemsX {
-        let sprite = SKSpriteNode(imageNamed: itemX.itemXType.spriteName)
-        sprite.size = CGSize(width: tileWidth, height: tileHeight)
-        sprite.position = pointFor(column: itemX.column, row: itemX.row)
-        itemsXLayer.addChild(sprite)
-        itemX.sprite = sprite
-      }
+        for itemX in itemsX {
+            let sprite = SKSpriteNode(imageNamed: itemX.itemXType.spriteName)
+            sprite.size = CGSize(width: tileWidth, height: tileHeight)
+            sprite.position = pointFor(column: itemX.column, row: itemX.row)
+            itemsXLayer.addChild(sprite)
+            itemX.sprite = sprite
+        }
     }
-
+    
     private func pointFor(column: Int, row: Int) -> CGPoint {
-      return CGPoint(
-        x: CGFloat(column) * tileWidth + tileWidth / 2,
-        y: CGFloat(row) * tileHeight + tileHeight / 2)
+        return CGPoint(
+            x: CGFloat(column) * tileWidth + tileWidth / 2,
+            y: CGFloat(row) * tileHeight + tileHeight / 2)
+    }
+    
+    private func convertPoint(_ point: CGPoint) -> (success: Bool, column: Int, row: Int) {
+        if point.x >= 0 && point.x < CGFloat(numColumns) * tileWidth &&
+            point.y >= 0 && point.y < CGFloat(numRows) * tileHeight {
+            return (true, Int(point.x / tileWidth), Int(point.y / tileHeight))
+        } else {
+            return (false, 0, 0)  // invalid location
+        }
     }
 
     func addTiles() {
-        // 1
         for row in 0..<numRows {
             for column in 0..<numColumns {
                 if level.tileAt(column: column, row: row) != nil {
@@ -81,15 +93,17 @@ class GameScene: SKScene {
             }
         }
         
-        // 2
         for row in 0...numRows {
             for column in 0...numColumns {
                 let topLeft     = (column > 0) && (row < numRows)
                 && level.tileAt(column: column - 1, row: row) != nil
+                
                 let bottomLeft  = (column > 0) && (row > 0)
                 && level.tileAt(column: column - 1, row: row - 1) != nil
+                
                 let topRight    = (column < numColumns) && (row < numRows)
                 && level.tileAt(column: column, row: row) != nil
+                
                 let bottomRight = (column < numColumns) && (row > 0)
                 && level.tileAt(column: column, row: row - 1) != nil
                 
@@ -141,5 +155,29 @@ class GameScene: SKScene {
             default:
                 return 0
         }
+    }
+}
+
+//MARK: - Extensions
+extension SKSpriteNode {
+    /// Initializes a textured sprite with a glow using an existing texture object.
+    convenience init(texture: SKTexture, glowRadius: CGFloat, size: CGSize) {
+        self.init(texture: texture, color: .clear, size: texture.size())
+        let glow: SKEffectNode = {
+            let glow = SKEffectNode()
+            let texture = SKSpriteNode(texture: texture)
+            texture.size = size
+            glow.addChild(texture)
+            glow.filter = CIFilter(name: "CIGaussianBlur", parameters: ["inputRadius": glowRadius])
+            glow.shouldRasterize = true
+            return glow
+        }()
+        let glowRoot: SKNode = {
+            let node = SKNode()
+            node.name = "Glow"
+            return node
+        }()
+        glowRoot.addChild(glow)
+        addChild(glowRoot)
     }
 }
