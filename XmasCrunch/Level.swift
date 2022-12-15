@@ -225,10 +225,18 @@ class Level {
         let horizontalChains = detectHorizontalMatches()
         let verticalChains = detectVerticalMatches()
         
-        print("Horizontal matches: \(horizontalChains)")
-        print("Vertical matches: \(verticalChains)")
+        removeItemsX(in: horizontalChains)
+        removeItemsX(in: verticalChains)
         
         return horizontalChains.union(verticalChains)
+    }
+    
+    private func removeItemsX(in chains: Set<Chain>) {
+        for chain in chains {
+            for itemX in chain.itemsX {
+                itemsX[itemX.column, itemX.row] = nil
+            }
+        }
     }
 
     //Right Description
