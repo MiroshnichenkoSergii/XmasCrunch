@@ -212,6 +212,33 @@ class GameScene: SKScene {
         run(matchSound)
         run(SKAction.wait(forDuration: 0.3), completion: completion)
     }
+    
+    func animateFallingItemsX(in columns: [[ItemX]], completion: @escaping () -> Void) {
+        var longestDuration: TimeInterval = 0
+        
+        for array in columns {
+            for (index, itemX) in array.enumerated() {
+                
+                let newPosition = pointFor(column: itemX.column, row: itemX.row)
+                let delay = 0.05 + 0.15 * TimeInterval(index)
+                let sprite = itemX.sprite!   // sprite always exists at this point
+                let duration = TimeInterval(((sprite.position.y - newPosition.y) / tileHeight) * 0.1)
+                
+                longestDuration = max(longestDuration, duration + delay)
+                
+                let moveAction = SKAction.move(to: newPosition, duration: duration)
+                
+                moveAction.timingMode = .easeOut
+                
+                sprite.run(
+                    SKAction.sequence([
+                        SKAction.wait(forDuration: delay),
+                        SKAction.group([moveAction, fallingItemSound])]))
+            }
+        }
+        
+        run(SKAction.wait(forDuration: longestDuration), completion: completion)
+    }
 
     func addTiles() {
         for row in 0..<numRows {
