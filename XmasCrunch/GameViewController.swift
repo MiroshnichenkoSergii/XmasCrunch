@@ -11,11 +11,13 @@ import GameplayKit
 import AVFoundation
 
 class GameViewController: UIViewController {
-
-    var level: Level!
     
     // MARK: Properties
+    var level: Level!
     var scene: GameScene!
+    
+    var movesLeft = 0
+    var score = 0
     
     lazy var backgroundMusic: AVAudioPlayer? = {
       guard let url = Bundle.main.url(forResource: "mainTheme", withExtension: "mp3") else {
@@ -67,6 +69,10 @@ class GameViewController: UIViewController {
     }
     
     func beginGame() {
+        movesLeft = level.maximumMoves
+        score = 0
+        updateLabels()
+
         shuffle()
     }
     
@@ -97,6 +103,12 @@ class GameViewController: UIViewController {
         }
 
         scene.animateMatchedItemsX(for: chains) {
+            
+            for chain in chains {
+              self.score += chain.score
+            }
+            self.updateLabels()
+
             let columns = self.level.fillHoles()
             self.scene.animateFallingItemsX(in: columns) {
                 let columns = self.level.topUpItemsX()
@@ -111,4 +123,11 @@ class GameViewController: UIViewController {
         level.detectPossibleSwaps()
         view.isUserInteractionEnabled = true
     }
+    
+    func updateLabels() {
+        targetLabel.text = String(format: "%ld", level.targetScore)
+        movesLabel.text = String(format: "%ld", movesLeft)
+        scoreLabel.text = String(format: "%ld", score)
+    }
+
 }

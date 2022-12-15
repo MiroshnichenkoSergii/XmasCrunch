@@ -12,6 +12,9 @@ let numRows = 9
 
 class Level {
     
+    var targetScore = 0
+    var maximumMoves = 0
+    
     private var itemsX = Array2D<ItemX>(columns: numColumns, rows: numRows)
     private var tiles = Array2D<Tile>(columns: numColumns, rows: numRows)
     
@@ -228,6 +231,9 @@ class Level {
         removeItemsX(in: horizontalChains)
         removeItemsX(in: verticalChains)
         
+        calculateScores(for: horizontalChains)
+        calculateScores(for: verticalChains)
+
         return horizontalChains.union(verticalChains)
     }
     
@@ -323,6 +329,13 @@ class Level {
         }
         return set
     }
+    
+    private func calculateScores(for chains: Set<Chain>) {
+        // 3-chain is 50 pts, 4-chain is 100, 5-chain is 200, and so on
+        for chain in chains {
+            chain.score = 50 * (chain.length - 2)
+        }
+    }
 
     init(filename: String) {
         guard let levelData = LevelData.loadFrom(file: filename) else { return }
@@ -337,6 +350,9 @@ class Level {
                 }
             }
         }
+        
+        targetScore = levelData.targetScore
+        maximumMoves = levelData.moves
     }
 
 }
