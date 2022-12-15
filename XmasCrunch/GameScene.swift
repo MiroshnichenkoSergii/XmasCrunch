@@ -27,6 +27,13 @@ class GameScene: SKScene {
     private var swipeFromColumn: Int?
     private var swipeFromRow: Int?
     
+    // Sound FX
+    let swapSound = SKAction.playSoundFileNamed("Chomp.wav", waitForCompletion: false)
+    let invalidSwapSound = SKAction.playSoundFileNamed("Error.wav", waitForCompletion: false)
+    let matchSound = SKAction.playSoundFileNamed("Ka-Ching.wav", waitForCompletion: false)
+    let fallingCookieSound = SKAction.playSoundFileNamed("Scrape.wav", waitForCompletion: false)
+    let addCookieSound = SKAction.playSoundFileNamed("Drip.wav", waitForCompletion: false)
+    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder) is not used in this app")
     }
@@ -145,6 +152,26 @@ class GameScene: SKScene {
                 handler(swap)
             }
         }
+    }
+    
+    func animate(_ swap: Swap, completion: @escaping () -> Void) {
+        let spriteA = swap.itemXA.sprite!
+        let spriteB = swap.itemXB.sprite!
+        
+        spriteA.zPosition = 100
+        spriteB.zPosition = 90
+        
+        let duration: TimeInterval = 0.3
+        
+        let moveA = SKAction.move(to: spriteB.position, duration: duration)
+        moveA.timingMode = .easeOut
+        spriteA.run(moveA, completion: completion)
+        
+        let moveB = SKAction.move(to: spriteA.position, duration: duration)
+        moveB.timingMode = .easeOut
+        spriteB.run(moveB)
+        
+        run(swapSound)
     }
 
     func addTiles() {

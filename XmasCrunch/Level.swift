@@ -16,18 +16,33 @@ class Level {
     private var tiles = Array2D<Tile>(columns: numColumns, rows: numRows)
     
     func itemX(atColumn column: Int, row: Int) -> ItemX? {
-      precondition(column >= 0 && column < numColumns)
-      precondition(row >= 0 && row < numRows)
-      return itemsX[column, row]
+        precondition(column >= 0 && column < numColumns)
+        precondition(row >= 0 && row < numRows)
+        return itemsX[column, row]
     }
     func tileAt(column: Int, row: Int) -> Tile? {
-      precondition(column >= 0 && column < numColumns)
-      precondition(row >= 0 && row < numRows)
-      return tiles[column, row]
+        precondition(column >= 0 && column < numColumns)
+        precondition(row >= 0 && row < numRows)
+        return tiles[column, row]
     }
     
     func shuffle() -> Set<ItemX> {
-      return createInitialItemsX()
+        return createInitialItemsX()
+    }
+    
+    func performSwap(_ swap: Swap) {
+        let columnA = swap.itemXA.column
+        let rowA = swap.itemXA.row
+        let columnB = swap.itemXB.column
+        let rowB = swap.itemXB.row
+        
+        itemsX[columnA, rowA] = swap.itemXB
+        swap.itemXB.column = columnA
+        swap.itemXB.row = rowA
+        
+        itemsX[columnB, rowB] = swap.itemXA
+        swap.itemXA.column = columnB
+        swap.itemXA.row = rowB
     }
 
     //Right Description
@@ -51,15 +66,12 @@ class Level {
     }
 
     init(filename: String) {
-        // 1
         guard let levelData = LevelData.loadFrom(file: filename) else { return }
-        // 2
+        
         let tilesArray = levelData.tiles
-        // 3
+        
         for (row, rowArray) in tilesArray.enumerated() {
-            // 4
             let tileRow = numRows - row - 1
-            // 5
             for (column, value) in rowArray.enumerated() {
                 if value == 1 {
                     tiles[column, tileRow] = Tile()
