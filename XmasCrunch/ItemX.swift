@@ -26,9 +26,9 @@ enum ItemXType: Int {
       return spriteNames[rawValue - 1]
     }
 
-//        var highlightedSpriteName: String {
-//          return spriteName + "-Highlighted"
-//        }
+    var highlightedSpriteName: String {
+      return spriteName + "HiLi"
+    }
     
     static func random() -> ItemXType {
       return ItemXType(rawValue: Int(arc4random_uniform(6)) + 1)!

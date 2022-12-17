@@ -26,6 +26,7 @@ class GameScene: SKScene {
     
     private var swipeFromColumn: Int?
     private var swipeFromRow: Int?
+    private var selectionSprite = SKSpriteNode()
     
     // Sound FX
     let swapSound = SKAction.playSoundFileNamed("Chomp.wav", waitForCompletion: false)
@@ -72,6 +73,7 @@ class GameScene: SKScene {
         let (success, column, row) = convertPoint(location)
         if success {
             if let itemX = level.itemX(atColumn: column, row: row) {
+                showSelectionIndicator(of: itemX)
                 swipeFromColumn = column
                 swipeFromRow = row
             }
@@ -100,13 +102,17 @@ class GameScene: SKScene {
             
             if horizontalDelta != 0 || verticalDelta != 0 {
                 trySwap(horizontalDelta: horizontalDelta, verticalDelta: verticalDelta)
-                
+                hideSelectionIndicator()
                 swipeFromColumn = nil
             }
         }
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if selectionSprite.parent != nil && swipeFromColumn != nil {
+          hideSelectionIndicator()
+        }
+
         swipeFromColumn = nil
         swipeFromRow = nil
     }
@@ -169,6 +175,27 @@ class GameScene: SKScene {
                 handler(swap)
             }
         }
+    }
+    
+    func showSelectionIndicator(of itemX: ItemX) {
+        if selectionSprite.parent != nil {
+            selectionSprite.removeFromParent()
+        }
+
+        if let sprite = itemX.sprite {
+            let texture = SKTexture(imageNamed: itemX.itemXType.highlightedSpriteName)
+            selectionSprite.size = CGSize(width: tileWidth, height: tileHeight)
+            selectionSprite.run(SKAction.setTexture(texture))
+
+            sprite.addChild(selectionSprite)
+            selectionSprite.alpha = 1.0
+        }
+    }
+    
+    func hideSelectionIndicator() {
+        selectionSprite.run(SKAction.sequence([
+            SKAction.fadeOut(withDuration: 0.3),
+            SKAction.removeFromParent()]))
     }
     
     //MARK: - Animating
