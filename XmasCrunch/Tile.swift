@@ -9,4 +9,6 @@ import Foundation
 
 class Tile {
     
+    //FIXME: - add different kind of tiles
+    
 }

@@ -10,7 +10,7 @@ import GameplayKit
 
 class GameScene: SKScene {
     
-    //MARK: - Properties
+    // MARK: - Properties
     var level: Level!
     var swipeHandler: ((Swap) -> Void)?
     
@@ -35,6 +35,7 @@ class GameScene: SKScene {
     let fallingItemSound = SKAction.playSoundFileNamed("Scrape.wav", waitForCompletion: false)
     let addItemSound = SKAction.playSoundFileNamed("Drip.wav", waitForCompletion: false)
     
+    // MARK: - Init
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder) is not used in this app")
     }
@@ -67,6 +68,7 @@ class GameScene: SKScene {
         let _ = SKLabelNode(fontNamed: "GillSans-BoldItalic")
     }
     
+    // MARK: - Interaction
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         guard let touch = touches.first else { return }
         let location = touch.location(in: itemsXLayer)
@@ -121,7 +123,7 @@ class GameScene: SKScene {
         touchesEnded(touches, with: event)
     }
     
-    //MARK: - Functions
+    // MARK: - Functions
     func addSprites(for itemsX: Set<ItemX>) {
         for itemX in itemsX {
             let sprite = SKSpriteNode(imageNamed: itemX.itemXType.spriteName)
@@ -198,7 +200,7 @@ class GameScene: SKScene {
             SKAction.removeFromParent()]))
     }
     
-    //MARK: - Animating
+    // MARK: - Animating
     func animate(_ swap: Swap, completion: @escaping () -> Void) {
         let spriteA = swap.itemXA.sprite!
         let spriteB = swap.itemXB.sprite!
@@ -395,10 +397,13 @@ class GameScene: SKScene {
                 if value != 0 {
                     let name = String(format: "Tile_%ld", value)
                     let tileNode = SKSpriteNode(imageNamed: name)
+                    
                     tileNode.size = CGSize(width: tileWidth, height: tileHeight)
+                    
                     var point = pointFor(column: column, row: row)
                     point.x -= tileWidth / 2
                     point.y -= tileHeight / 2
+                    
                     tileNode.position = point
                     tilesLayer.addChild(tileNode)
                 }
@@ -440,7 +445,7 @@ class GameScene: SKScene {
     }
 }
 
-//MARK: - Extensions
+// MARK: - Extensions
 extension SKSpriteNode {
     /// Initializes a textured sprite with a glow using an existing texture object.
     convenience init(texture: SKTexture, glowRadius: CGFloat, size: CGSize) {

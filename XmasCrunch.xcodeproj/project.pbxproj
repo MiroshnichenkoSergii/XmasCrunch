@@ -22,12 +22,12 @@
 		EFE9454129434CEC00FEEE73 /* Chomp.wav in Resources */ = {isa = PBXBuildFile; fileRef = EFE9453B29434CEC00FEEE73 /* Chomp.wav */; };
 		EFE9454229434CEC00FEEE73 /* Error.wav in Resources */ = {isa = PBXBuildFile; fileRef = EFE9453C29434CEC00FEEE73 /* Error.wav */; };
 		EFE9454429434D0A00FEEE73 /* mainTheme.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = EFE9454329434D0900FEEE73 /* mainTheme.mp3 */; };
-		EFE9454B2948A06F00FEEE73 /* Level_3.json in Resources */ = {isa = PBXBuildFile; fileRef = EFE945462948A06F00FEEE73 /* Level_3.json */; };
+		EFE9454B2948A06F00FEEE73 /* Level_2.json in Resources */ = {isa = PBXBuildFile; fileRef = EFE945462948A06F00FEEE73 /* Level_2.json */; };
 		EFE9454C2948A07000FEEE73 /* Level_5.json in Resources */ = {isa = PBXBuildFile; fileRef = EFE945472948A06F00FEEE73 /* Level_5.json */; };
 		EFE9454D2948A07000FEEE73 /* Level_4.json in Resources */ = {isa = PBXBuildFile; fileRef = EFE945482948A06F00FEEE73 /* Level_4.json */; };
 		EFE9454E2948A07000FEEE73 /* Level_0.json in Resources */ = {isa = PBXBuildFile; fileRef = EFE945492948A06F00FEEE73 /* Level_0.json */; };
-		EFE9454F2948A07000FEEE73 /* Level_2.json in Resources */ = {isa = PBXBuildFile; fileRef = EFE9454A2948A06F00FEEE73 /* Level_2.json */; };
-		EFE945512948A12200FEEE73 /* Level_1.json in Resources */ = {isa = PBXBuildFile; fileRef = EFE945502948A12200FEEE73 /* Level_1.json */; };
+		EFE9454F2948A07000FEEE73 /* Level_1.json in Resources */ = {isa = PBXBuildFile; fileRef = EFE9454A2948A06F00FEEE73 /* Level_1.json */; };
+		EFE945512948A12200FEEE73 /* Level_3.json in Resources */ = {isa = PBXBuildFile; fileRef = EFE945502948A12200FEEE73 /* Level_3.json */; };
 		EFE945532948A7AB00FEEE73 /* Sprites.atlas in Resources */ = {isa = PBXBuildFile; fileRef = EFE945522948A7AB00FEEE73 /* Sprites.atlas */; };
 		EFE945552948AAFE00FEEE73 /* Tile.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFE945542948AAFE00FEEE73 /* Tile.swift */; };
 		EFE945572948AB4000FEEE73 /* Array2D.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFE945562948AB4000FEEE73 /* Array2D.swift */; };
@@ -53,12 +53,12 @@
 		EFE9453B29434CEC00FEEE73 /* Chomp.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Chomp.wav; sourceTree = "<group>"; };
 		EFE9453C29434CEC00FEEE73 /* Error.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Error.wav; sourceTree = "<group>"; };
 		EFE9454329434D0900FEEE73 /* mainTheme.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = mainTheme.mp3; sourceTree = "<group>"; };
-		EFE945462948A06F00FEEE73 /* Level_3.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Level_3.json; sourceTree = "<group>"; };
+		EFE945462948A06F00FEEE73 /* Level_2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Level_2.json; sourceTree = "<group>"; };
 		EFE945472948A06F00FEEE73 /* Level_5.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Level_5.json; sourceTree = "<group>"; };
 		EFE945482948A06F00FEEE73 /* Level_4.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Level_4.json; sourceTree = "<group>"; };
 		EFE945492948A06F00FEEE73 /* Level_0.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Level_0.json; sourceTree = "<group>"; };
-		EFE9454A2948A06F00FEEE73 /* Level_2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Level_2.json; sourceTree = "<group>"; };
-		EFE945502948A12200FEEE73 /* Level_1.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Level_1.json; sourceTree = "<group>"; };
+		EFE9454A2948A06F00FEEE73 /* Level_1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Level_1.json; sourceTree = "<group>"; };
+		EFE945502948A12200FEEE73 /* Level_3.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Level_3.json; sourceTree = "<group>"; };
 		EFE945522948A7AB00FEEE73 /* Sprites.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Sprites.atlas; sourceTree = "<group>"; };
 		EFE945542948AAFE00FEEE73 /* Tile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tile.swift; sourceTree = "<group>"; };
 		EFE945562948AB4000FEEE73 /* Array2D.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Array2D.swift; sourceTree = "<group>"; };
@@ -135,9 +135,9 @@
 			isa = PBXGroup;
 			children = (
 				EFE945492948A06F00FEEE73 /* Level_0.json */,
-				EFE945502948A12200FEEE73 /* Level_1.json */,
-				EFE9454A2948A06F00FEEE73 /* Level_2.json */,
-				EFE945462948A06F00FEEE73 /* Level_3.json */,
+				EFE9454A2948A06F00FEEE73 /* Level_1.json */,
+				EFE945462948A06F00FEEE73 /* Level_2.json */,
+				EFE945502948A12200FEEE73 /* Level_3.json */,
 				EFE945482948A06F00FEEE73 /* Level_4.json */,
 				EFE945472948A06F00FEEE73 /* Level_5.json */,
 			);
@@ -202,12 +202,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EFE9454F2948A07000FEEE73 /* Level_2.json in Resources */,
-				EFE945512948A12200FEEE73 /* Level_1.json in Resources */,
+				EFE9454F2948A07000FEEE73 /* Level_1.json in Resources */,
+				EFE945512948A12200FEEE73 /* Level_3.json in Resources */,
 				EFB625EF2948C5A500BDBA19 /* Grid.atlas in Resources */,
 				EFE9453D29434CEC00FEEE73 /* Scrape.wav in Resources */,
 				EFE9454C2948A07000FEEE73 /* Level_5.json in Resources */,
-				EFE9454B2948A06F00FEEE73 /* Level_3.json in Resources */,
+				EFE9454B2948A06F00FEEE73 /* Level_2.json in Resources */,
 				EFE9454029434CEC00FEEE73 /* Drip.wav in Resources */,
 				EFE9454229434CEC00FEEE73 /* Error.wav in Resources */,
 				EFE9453E29434CEC00FEEE73 /* Ka-Ching.wav in Resources */,

@@ -12,7 +12,7 @@ import AVFoundation
 
 class GameViewController: UIViewController {
     
-    // MARK: Properties
+    // MARK: - Properties
     var level: Level!
     var scene: GameScene!
     
@@ -35,7 +35,7 @@ class GameViewController: UIViewController {
       }
     }()
     
-    // MARK: Outlets
+    // MARK: - Outlets
     @IBOutlet weak var targetLabel: UILabel!
     @IBOutlet weak var movesLabel: UILabel!
     @IBOutlet weak var scoreLabel: UILabel!
@@ -52,6 +52,14 @@ class GameViewController: UIViewController {
         backgroundMusic?.play()
     }
     
+    // MARK: - Action buttons
+    @IBAction func shuffleButtonPaped(_ sender: UIButton) {
+        scene.removeAllItemsXSprites()
+        shuffle()
+        decrementMoves()
+    }
+    
+    // MARK: - Functions
     func setupLevel(number levelNumber: Int) {
         let skView = view as! SKView
         skView.isMultipleTouchEnabled = false
@@ -75,13 +83,6 @@ class GameViewController: UIViewController {
         
         // Start the game.
         beginGame()
-    }
-    
-    // MARK: Action buttons
-    @IBAction func shuffleButtonPaped(_ sender: UIButton) {
-        scene.removeAllItemsXSprites()
-        shuffle()
-        decrementMoves()
     }
     
     func beginGame() {
