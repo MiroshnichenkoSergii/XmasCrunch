@@ -7,13 +7,14 @@
 
 import Foundation
 
+// MARK: - Global properties
 let numColumns = 9
 let numRows = 9
-
 let numLevels = 5 // Excluding level 0
 
 class Level {
     
+    // MARK: - Level class properties
     var targetScore = 0
     var maximumMoves = 0
     
@@ -23,6 +24,7 @@ class Level {
     private var possibleSwaps: Set<Swap> = []
     private var comboMultiplier = 0
 
+    // MARK: - Functions
     func itemX(atColumn column: Int, row: Int) -> ItemX? {
         precondition(column >= 0 && column < numColumns)
         precondition(row >= 0 && row < numRows)
@@ -345,6 +347,7 @@ class Level {
         comboMultiplier = 1
     }
 
+    // MARK: - Init
     init(filename: String) {
         guard let levelData = LevelData.loadFrom(file: filename) else { return }
         

@@ -8,6 +8,7 @@
 import Foundation
 
 class Chain: Hashable, CustomStringConvertible {
+    
     var itemsX: [ItemX] = []
     var score = 0
     
@@ -23,8 +24,22 @@ class Chain: Hashable, CustomStringConvertible {
         }
     }
     
+    // MARK: - Properties
     var chainType: ChainType
     
+    var length: Int {
+        return itemsX.count
+    }
+    
+    var description: String {
+        return "type:\(chainType) itemsX:\(itemsX)"
+    }
+    
+    var hashValue: Int {
+        return itemsX.reduce (0) { $0.hashValue ^ $1.hashValue }
+    }
+    
+    // MARK: - Functions
     init(chainType: ChainType) {
         self.chainType = chainType
     }
@@ -39,18 +54,6 @@ class Chain: Hashable, CustomStringConvertible {
     
     func lastItemX() -> ItemX {
         return itemsX[itemsX.count - 1]
-    }
-    
-    var length: Int {
-        return itemsX.count
-    }
-    
-    var description: String {
-        return "type:\(chainType) itemsX:\(itemsX)"
-    }
-    
-    var hashValue: Int {
-        return itemsX.reduce (0) { $0.hashValue ^ $1.hashValue }
     }
     
     func hash(into hasher: inout Hasher) {

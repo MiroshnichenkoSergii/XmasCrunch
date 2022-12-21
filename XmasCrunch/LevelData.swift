@@ -5,6 +5,10 @@
 //  Created by Sergii Miroshnichenko on 13.12.2022.
 //
 
+/*
+ Loading data from file
+ */
+
 import Foundation
 
 class LevelData: Codable {
@@ -17,6 +21,7 @@ class LevelData: Codable {
     var levelData: LevelData?
     
     if let path = Bundle.main.url(forResource: filename, withExtension: "json") {
+        
       do {
         data = try Data(contentsOf: path)
       }
@@ -24,6 +29,7 @@ class LevelData: Codable {
         print("Could not load level file: \(filename), error: \(error)")
         return nil
       }
+        
       do {
         levelData = try JSONDecoder().decode(LevelData.self, from: data)
       }
