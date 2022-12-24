@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import AVFoundation
 
 class MenuViewController: UIViewController {
     
@@ -13,11 +14,31 @@ class MenuViewController: UIViewController {
     
     lazy var animator = UIDynamicAnimator(referenceView: view)
     lazy var patternBehavior = PatternBehavior(in: animator)
+    
+    lazy var backgroundMusic: AVAudioPlayer? = {
+      guard let url = Bundle.main.url(forResource: "menuTheme", withExtension: "mp3") else {
+        return nil
+      }
+      do {
+        let player = try AVAudioPlayer(contentsOf: url)
+        player.numberOfLoops = -1
+        return player
+      } catch {
+        return nil
+      }
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         loadPattern(with: 10)
+        backgroundMusic?.play()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        backgroundMusic?.stop()
     }
 
     func loadPattern(with number: Int) {

@@ -12,6 +12,7 @@
 		EFB625F3294B3B9300BDBA19 /* Chain.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFB625F2294B3B9300BDBA19 /* Chain.swift */; };
 		EFB625F52954810B00BDBA19 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFB625F42954810B00BDBA19 /* MenuViewController.swift */; };
 		EFB625F729570B5F00BDBA19 /* PatternBehavior.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFB625F629570B5F00BDBA19 /* PatternBehavior.swift */; };
+		EFB625F929570FBD00BDBA19 /* menuTheme.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = EFB625F829570FBD00BDBA19 /* menuTheme.mp3 */; };
 		EFE945202943444500FEEE73 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFE9451F2943444500FEEE73 /* AppDelegate.swift */; };
 		EFE945262943444500FEEE73 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFE945252943444500FEEE73 /* GameScene.swift */; };
 		EFE945282943444500FEEE73 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFE945272943444500FEEE73 /* GameViewController.swift */; };
@@ -44,6 +45,7 @@
 		EFB625F2294B3B9300BDBA19 /* Chain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chain.swift; sourceTree = "<group>"; };
 		EFB625F42954810B00BDBA19 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		EFB625F629570B5F00BDBA19 /* PatternBehavior.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatternBehavior.swift; sourceTree = "<group>"; };
+		EFB625F829570FBD00BDBA19 /* menuTheme.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = menuTheme.mp3; sourceTree = "<group>"; };
 		EFE9451C2943444500FEEE73 /* XmasCrunch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XmasCrunch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EFE9451F2943444500FEEE73 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EFE945252943444500FEEE73 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
@@ -133,6 +135,7 @@
 				EFE9453B29434CEC00FEEE73 /* Chomp.wav */,
 				EFE9453C29434CEC00FEEE73 /* Error.wav */,
 				EFE9454329434D0900FEEE73 /* mainTheme.mp3 */,
+				EFB625F829570FBD00BDBA19 /* menuTheme.mp3 */,
 			);
 			path = Sounds;
 			sourceTree = "<group>";
@@ -215,6 +218,7 @@
 				EFE9454C2948A07000FEEE73 /* Level_5.json in Resources */,
 				EFE9454B2948A06F00FEEE73 /* Level_2.json in Resources */,
 				EFE9454029434CEC00FEEE73 /* Drip.wav in Resources */,
+				EFB625F929570FBD00BDBA19 /* menuTheme.mp3 in Resources */,
 				EFE9454229434CEC00FEEE73 /* Error.wav in Resources */,
 				EFE9453E29434CEC00FEEE73 /* Ka-Ching.wav in Resources */,
 				EFE9454E2948A07000FEEE73 /* Level_0.json in Resources */,
