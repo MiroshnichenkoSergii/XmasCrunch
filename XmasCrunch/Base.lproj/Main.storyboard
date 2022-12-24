@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BV1-FR-VrT">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="9Ou-vK-IIj">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
@@ -8,6 +8,73 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Menu-->
+        <scene sceneID="RYB-hC-Fs8">
+            <objects>
+                <viewController id="hUS-FO-0r9" customClass="MenuViewController" customModule="XmasCrunch" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Xrz-jD-C8D">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="35" translatesAutoresizingMaskIntoConstraints="NO" id="BXK-Lr-vlZ">
+                                <rect key="frame" x="82" y="362" width="250" height="226"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GIy-SR-dbV">
+                                        <rect key="frame" x="22" y="0.0" width="206" height="52"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="New Game" cornerStyle="medium">
+                                            <backgroundConfiguration key="background" strokeWidth="2" strokeOutset="0.0">
+                                                <color key="backgroundColor" red="0.54394846389999996" green="0.81898443740000004" blue="0.47467242700000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                <color key="strokeColor" red="0.66815575859999998" green="1" blue="0.58240383969999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                            </backgroundConfiguration>
+                                            <fontDescription key="titleFontDescription" name="Chalkduster" family="Chalkduster" pointSize="30"/>
+                                            <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <segue destination="BV1-FR-VrT" kind="show" identifier="NewGame" id="XYL-Sl-Ju9"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jjh-J3-3tA">
+                                        <rect key="frame" x="0.0" y="87" width="250" height="52"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Choose Level" cornerStyle="medium">
+                                            <backgroundConfiguration key="background" strokeWidth="2" strokeOutset="0.0">
+                                                <color key="backgroundColor" red="0.54394846389999996" green="0.81898443740000004" blue="0.47467242700000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                <color key="strokeColor" red="0.66815575859999998" green="1" blue="0.58240383969999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                            </backgroundConfiguration>
+                                            <fontDescription key="titleFontDescription" name="Chalkduster" family="Chalkduster" pointSize="30"/>
+                                            <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </buttonConfiguration>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NOh-rm-pm8">
+                                        <rect key="frame" x="48.5" y="174" width="153" height="52"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Settings" cornerStyle="medium">
+                                            <backgroundConfiguration key="background" strokeWidth="2" strokeOutset="0.0">
+                                                <color key="backgroundColor" red="0.54394846389999996" green="0.81898443740000004" blue="0.47467242700000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                <color key="strokeColor" red="0.66815575859999998" green="1" blue="0.58240383969999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                            </backgroundConfiguration>
+                                            <fontDescription key="titleFontDescription" name="Chalkduster" family="Chalkduster" pointSize="30"/>
+                                            <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </buttonConfiguration>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="iib-tl-l0v"/>
+                        <color key="backgroundColor" red="0.81905943160000005" green="0.90448808670000003" blue="0.72938591239999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstItem="BXK-Lr-vlZ" firstAttribute="centerX" secondItem="iib-tl-l0v" secondAttribute="centerX" id="YRf-di-RUq"/>
+                            <constraint firstItem="BXK-Lr-vlZ" firstAttribute="centerY" secondItem="iib-tl-l0v" secondAttribute="centerY" id="tfI-GE-tSE"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Menu" id="phN-Su-TFd"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="O5W-yJ-tYO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="179.71014492753625" y="75.669642857142847"/>
+        </scene>
         <!--Game View Controller-->
         <scene sceneID="tXr-a1-R10">
             <objects>
@@ -17,7 +84,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="kxF-k2-EYQ">
-                                <rect key="frame" x="44.5" y="68" width="325.5" height="73"/>
+                                <rect key="frame" x="44.5" y="112" width="325.5" height="73"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="8JT-hR-oR3">
                                         <rect key="frame" x="0.0" y="0.0" width="88.5" height="73"/>
@@ -108,7 +175,7 @@
                                 </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="iRr-gs-TTC">
-                                <rect key="frame" x="0.0" y="340.5" width="414" height="225"/>
+                                <rect key="frame" x="0.0" y="362.5" width="414" height="225"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="225" id="iqT-FO-yGD"/>
                                 </constraints>
@@ -126,6 +193,7 @@
                             <constraint firstItem="gYC-SA-ewE" firstAttribute="centerX" secondItem="4qk-I5-YsI" secondAttribute="centerX" id="YcM-kB-Ob7"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" leftItemsSupplementBackButton="YES" id="wWd-do-bLl"/>
                     <connections>
                         <outlet property="gameOverPanel" destination="iRr-gs-TTC" id="T9H-1I-hoU"/>
                         <outlet property="movesLabel" destination="z00-Pq-ZGn" id="8vA-oz-704"/>
@@ -136,7 +204,31 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="34.782608695652179" y="75.669642857142847"/>
+            <point key="canvasLocation" x="944.92753623188412" y="75.669642857142847"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="cxr-uo-Zmf">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="9Ou-vK-IIj" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="hZA-Rg-YB7">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <textAttributes key="titleTextAttributes">
+                            <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="30"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="textShadowColor" red="0.54394846389999996" green="0.81898443740000004" blue="0.47467242700000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            <offsetWrapper key="textShadowOffset" horizontal="2" vertical="2"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="hUS-FO-0r9" kind="relationship" relationship="rootViewController" id="MhU-Xq-Cf6"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eQ0-vN-sOn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-730.43478260869574" y="75.669642857142847"/>
         </scene>
     </scenes>
     <resources>

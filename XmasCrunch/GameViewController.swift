@@ -52,6 +52,11 @@ class GameViewController: UIViewController {
         backgroundMusic?.play()
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        backgroundMusic?.stop()
+    }
+    
     // MARK: - Action buttons
     @IBAction func shuffleButtonPaped(_ sender: UIButton) {
         scene.removeAllItemsXSprites()
