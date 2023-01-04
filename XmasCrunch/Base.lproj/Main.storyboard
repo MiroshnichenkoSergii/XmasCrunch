@@ -8,6 +8,48 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Choose level-->
+        <scene sceneID="B88-b4-3qo">
+            <objects>
+                <viewController id="mxo-7L-Cl8" customClass="ChooseLevelViewController" customModule="XmasCrunch" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="FoC-tB-wep">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" estimatedSectionHeaderHeight="-1" sectionFooterHeight="28" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="3kW-7z-rde">
+                                <rect key="frame" x="0.0" y="88" width="414" height="474"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="LevelNumber" id="tZu-dr-dcD">
+                                        <rect key="frame" x="0.0" y="44.5" width="414" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="tZu-dr-dcD" id="PNi-Rv-eyd">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <color key="backgroundColor" red="0.81905943160000005" green="0.90448808670000003" blue="0.72938591239999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="2cW-Zi-lPF"/>
+                        <color key="backgroundColor" red="0.81905943160000005" green="0.90448808670000003" blue="0.72938591239999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstItem="3kW-7z-rde" firstAttribute="leading" secondItem="2cW-Zi-lPF" secondAttribute="leading" id="WSh-vR-WDI"/>
+                            <constraint firstItem="3kW-7z-rde" firstAttribute="top" secondItem="2cW-Zi-lPF" secondAttribute="top" id="cpv-sj-Xac"/>
+                            <constraint firstItem="2cW-Zi-lPF" firstAttribute="bottom" secondItem="3kW-7z-rde" secondAttribute="bottom" constant="300" id="kCq-AU-Zzj"/>
+                            <constraint firstItem="3kW-7z-rde" firstAttribute="trailing" secondItem="2cW-Zi-lPF" secondAttribute="trailing" id="tRU-QL-EBd"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Choose level" id="Rju-uI-c3n"/>
+                    <connections>
+                        <outlet property="tableView" destination="3kW-7z-rde" id="fOY-Z7-1Mf"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nGe-Ls-mKV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="179.71014492753625" y="-616.07142857142856"/>
+        </scene>
         <!--Menu-->
         <scene sceneID="RYB-hC-Fs8">
             <objects>
@@ -46,6 +88,9 @@
                                             <fontDescription key="titleFontDescription" name="Chalkduster" family="Chalkduster" pointSize="30"/>
                                             <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </buttonConfiguration>
+                                        <connections>
+                                            <segue destination="mxo-7L-Cl8" kind="show" identifier="levelNumberVC" id="Sb9-KB-uMw"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NOh-rm-pm8">
                                         <rect key="frame" x="48.5" y="174" width="153" height="52"/>
@@ -209,9 +254,9 @@
         <!--Navigation Controller-->
         <scene sceneID="cxr-uo-Zmf">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="9Ou-vK-IIj" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" interfaceStyle="light" id="9Ou-vK-IIj" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="hZA-Rg-YB7">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="hZA-Rg-YB7">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <textAttributes key="titleTextAttributes">
@@ -222,6 +267,9 @@
                         </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="mZf-Al-rCH">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
                     <connections>
                         <segue destination="hUS-FO-0r9" kind="relationship" relationship="rootViewController" id="MhU-Xq-Cf6"/>
                     </connections>

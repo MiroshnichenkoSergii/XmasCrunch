@@ -30,15 +30,28 @@ class MenuViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         loadPattern(with: 10)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         backgroundMusic?.play()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        
         backgroundMusic?.stop()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        switch segue.identifier {
+            case "levelNumberVC":
+                if let vc = segue.destination as? ChooseLevelViewController {
+                    vc.levelList = [1, 2, 3, 4, 5, 6]
+                }
+            default:
+                break
+        }
     }
 
     func loadPattern(with number: Int) {
