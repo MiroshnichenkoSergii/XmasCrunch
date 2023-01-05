@@ -14,6 +14,7 @@
 		EFB625F729570B5F00BDBA19 /* PatternBehavior.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFB625F629570B5F00BDBA19 /* PatternBehavior.swift */; };
 		EFB625F929570FBD00BDBA19 /* menuTheme.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = EFB625F829570FBD00BDBA19 /* menuTheme.mp3 */; };
 		EFB625FD2965A00600BDBA19 /* ChooseLevelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFB625FC2965A00600BDBA19 /* ChooseLevelViewController.swift */; };
+		EFB625FF2966EA8C00BDBA19 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFB625FE2966EA8C00BDBA19 /* Settings.swift */; };
 		EFE945202943444500FEEE73 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFE9451F2943444500FEEE73 /* AppDelegate.swift */; };
 		EFE945262943444500FEEE73 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFE945252943444500FEEE73 /* GameScene.swift */; };
 		EFE945282943444500FEEE73 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFE945272943444500FEEE73 /* GameViewController.swift */; };
@@ -48,6 +49,7 @@
 		EFB625F629570B5F00BDBA19 /* PatternBehavior.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatternBehavior.swift; sourceTree = "<group>"; };
 		EFB625F829570FBD00BDBA19 /* menuTheme.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = menuTheme.mp3; sourceTree = "<group>"; };
 		EFB625FC2965A00600BDBA19 /* ChooseLevelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseLevelViewController.swift; sourceTree = "<group>"; };
+		EFB625FE2966EA8C00BDBA19 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		EFE9451C2943444500FEEE73 /* XmasCrunch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XmasCrunch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EFE9451F2943444500FEEE73 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EFE945252943444500FEEE73 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
@@ -117,6 +119,7 @@
 				EFB625F2294B3B9300BDBA19 /* Chain.swift */,
 				EFB625F42954810B00BDBA19 /* MenuViewController.swift */,
 				EFB625FC2965A00600BDBA19 /* ChooseLevelViewController.swift */,
+				EFB625FE2966EA8C00BDBA19 /* Settings.swift */,
 				EFB625F629570B5F00BDBA19 /* PatternBehavior.swift */,
 				EFE9452C2943444800FEEE73 /* Assets.xcassets */,
 				EFE945292943444500FEEE73 /* Main.storyboard */,
@@ -246,6 +249,7 @@
 				EFE945262943444500FEEE73 /* GameScene.swift in Sources */,
 				EFB625F729570B5F00BDBA19 /* PatternBehavior.swift in Sources */,
 				EFE9455C2948AF0600FEEE73 /* ItemX.swift in Sources */,
+				EFB625FF2966EA8C00BDBA19 /* Settings.swift in Sources */,
 				EFE945282943444500FEEE73 /* GameViewController.swift in Sources */,
 				EFB625F52954810B00BDBA19 /* MenuViewController.swift in Sources */,
 				EFE945202943444500FEEE73 /* AppDelegate.swift in Sources */,

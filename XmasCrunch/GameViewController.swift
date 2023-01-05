@@ -18,7 +18,7 @@ class GameViewController: UIViewController {
     
     var movesLeft = 0
     var score = 0
-    var currentLevelNumber = 0
+    var currentLevelNumber = Setting.shared.currentSettings.level - 1
     
     var tapGestureRecognizer: UITapGestureRecognizer!
     

@@ -30,12 +30,20 @@ extension ChooseLevelViewController: UITableViewDataSource, UITableViewDelegate 
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "LevelNumber", for: indexPath)
-        cell.textLabel?.text = String(levelList[indexPath.row])
+        let text = "Level " + String(levelList[indexPath.row])
+        
+        cell.textLabel?.text = text
+        cell.textLabel?.font = UIFont(name: "Chalkduster", size: 26)
+        cell.textLabel?.textColor = .white
+        cell.textLabel?.shadowColor = .green
+        cell.textLabel?.shadowOffset = CGSize(width: 2, height: 2)
+        
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        
+        Setting.shared.currentSettings.level = levelList[indexPath.row]
+        navigationController?.popViewController(animated: true)
     }
 }

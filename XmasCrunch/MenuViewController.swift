@@ -47,6 +47,8 @@ class MenuViewController: UIViewController {
         switch segue.identifier {
             case "levelNumberVC":
                 if let vc = segue.destination as? ChooseLevelViewController {
+                    
+                    //FIXME: - Should get this list from game folder "Level"
                     vc.levelList = [1, 2, 3, 4, 5, 6]
                 }
             default:
@@ -62,4 +64,5 @@ class MenuViewController: UIViewController {
             patternBehavior.addItem(patternView)
         }
     }
+    
 }
