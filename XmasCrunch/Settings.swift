@@ -13,13 +13,14 @@ enum KeysUserDefaults {
 
 struct GameSetting: Codable {
     var level: Int
+    var music: Bool
 }
 
 class Setting {
     
     static var shared = Setting()
     
-    var defaultSettings = GameSetting(level: 0)
+    var defaultSettings = GameSetting(level: 0, music: true)
     
     var currentSettings: GameSetting {
         get {

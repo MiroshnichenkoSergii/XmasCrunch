@@ -18,21 +18,24 @@ class GameViewController: UIViewController {
     
     var movesLeft = 0
     var score = 0
-    var currentLevelNumber = Setting.shared.currentSettings.level - 1
+    var currentLevelNumber = Setting.shared.currentSettings.level
     
     var tapGestureRecognizer: UITapGestureRecognizer!
     
     lazy var backgroundMusic: AVAudioPlayer? = {
-      guard let url = Bundle.main.url(forResource: "mainTheme", withExtension: "mp3") else {
-        return nil
-      }
-      do {
-        let player = try AVAudioPlayer(contentsOf: url)
-        player.numberOfLoops = -1
-        return player
-      } catch {
-        return nil
-      }
+        guard let url = Bundle.main.url(forResource: "mainTheme", withExtension: "mp3") else {
+            return nil
+        }
+        do {
+            if Setting.shared.currentSettings.music {
+                let player = try AVAudioPlayer(contentsOf: url)
+                player.numberOfLoops = -1
+                return player
+            }
+            return nil
+        } catch {
+            return nil
+        }
     }()
     
     // MARK: - Outlets

@@ -62,10 +62,10 @@
                                 <rect key="frame" x="82" y="362" width="250" height="226"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GIy-SR-dbV">
-                                        <rect key="frame" x="22" y="0.0" width="206" height="52"/>
+                                        <rect key="frame" x="15.5" y="0.0" width="219" height="52"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="New Game" cornerStyle="medium">
+                                        <buttonConfiguration key="configuration" style="plain" title="Start Game" cornerStyle="medium">
                                             <backgroundConfiguration key="background" strokeWidth="2" strokeOutset="0.0">
                                                 <color key="backgroundColor" red="0.54394846389999996" green="0.81898443740000004" blue="0.47467242700000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <color key="strokeColor" red="0.66815575859999998" green="1" blue="0.58240383969999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -74,7 +74,7 @@
                                             <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </buttonConfiguration>
                                         <connections>
-                                            <segue destination="BV1-FR-VrT" kind="show" identifier="NewGame" id="XYL-Sl-Ju9"/>
+                                            <segue destination="BV1-FR-VrT" kind="show" identifier="showStartGame" id="XYL-Sl-Ju9"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jjh-J3-3tA">
@@ -89,7 +89,7 @@
                                             <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </buttonConfiguration>
                                         <connections>
-                                            <segue destination="mxo-7L-Cl8" kind="show" identifier="levelNumberVC" id="Sb9-KB-uMw"/>
+                                            <segue destination="mxo-7L-Cl8" kind="show" identifier="showLevelNumberVC" id="Sb9-KB-uMw"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NOh-rm-pm8">
@@ -103,6 +103,9 @@
                                             <fontDescription key="titleFontDescription" name="Chalkduster" family="Chalkduster" pointSize="30"/>
                                             <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </buttonConfiguration>
+                                        <connections>
+                                            <segue destination="vLf-W0-hDm" kind="show" identifier="showSettingsVC" id="2Bq-0O-hfY"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -119,6 +122,67 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="O5W-yJ-tYO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="179.71014492753625" y="75.669642857142847"/>
+        </scene>
+        <!--Settings-->
+        <scene sceneID="a2x-MY-hqO">
+            <objects>
+                <tableViewController id="vLf-W0-hDm" customClass="SettingsViewController" customModule="XmasCrunch" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="Bxz-cZ-DaJ">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.81905943160000005" green="0.90448808670000003" blue="0.72938591239999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <sections>
+                            <tableViewSection id="51c-WX-q0e">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="xKC-ai-0Jt">
+                                        <rect key="frame" x="0.0" y="44.5" width="414" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="xKC-ai-0Jt" id="UcJ-hQ-lUF">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Music in game" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o7R-gj-1nA">
+                                                    <rect key="frame" x="20" y="8" width="166.5" height="27.5"/>
+                                                    <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="20"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                    <color key="shadowColor" red="0.54394846389999996" green="0.81898443740000004" blue="0.47467242700000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    <size key="shadowOffset" width="2" height="2"/>
+                                                </label>
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gZ9-Ig-jPL">
+                                                    <rect key="frame" x="343" y="6.5" width="51" height="31"/>
+                                                    <connections>
+                                                        <action selector="switchMusic:" destination="vLf-W0-hDm" eventType="valueChanged" id="2WR-14-2Bk"/>
+                                                    </connections>
+                                                </switch>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstItem="o7R-gj-1nA" firstAttribute="leading" secondItem="UcJ-hQ-lUF" secondAttribute="leadingMargin" id="27q-Xo-mWx"/>
+                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="o7R-gj-1nA" secondAttribute="trailing" constant="20" symbolic="YES" id="3NA-pq-t1i"/>
+                                                <constraint firstItem="o7R-gj-1nA" firstAttribute="centerY" secondItem="UcJ-hQ-lUF" secondAttribute="centerY" id="6p4-4U-xaT"/>
+                                                <constraint firstItem="gZ9-Ig-jPL" firstAttribute="centerY" secondItem="UcJ-hQ-lUF" secondAttribute="centerY" id="cBu-pQ-qWb"/>
+                                                <constraint firstAttribute="trailing" secondItem="gZ9-Ig-jPL" secondAttribute="trailing" constant="22" id="qDo-78-bIF"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                        <connections>
+                            <outlet property="dataSource" destination="vLf-W0-hDm" id="vdX-Fk-BE7"/>
+                            <outlet property="delegate" destination="vLf-W0-hDm" id="jss-LC-A7E"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Settings" id="Nk4-tK-net"/>
+                    <connections>
+                        <outlet property="musicSwitcher" destination="gZ9-Ig-jPL" id="fQT-Nq-gog"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9X5-gM-erD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="180" y="790"/>
         </scene>
         <!--Game View Controller-->
         <scene sceneID="tXr-a1-R10">
@@ -249,7 +313,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="944.92753623188412" y="75.669642857142847"/>
+            <point key="canvasLocation" x="1335" y="76"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="cxr-uo-Zmf">

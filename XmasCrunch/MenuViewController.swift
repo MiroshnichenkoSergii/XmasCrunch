@@ -10,22 +10,22 @@ import AVFoundation
 
 class MenuViewController: UIViewController {
     
-    let patternImage = UIImage(named: "giftIcon")
+    let patternImage = UIImage(named: "giftBackground")
     
     lazy var animator = UIDynamicAnimator(referenceView: view)
     lazy var patternBehavior = PatternBehavior(in: animator)
     
     lazy var backgroundMusic: AVAudioPlayer? = {
-      guard let url = Bundle.main.url(forResource: "menuTheme", withExtension: "mp3") else {
-        return nil
-      }
-      do {
-        let player = try AVAudioPlayer(contentsOf: url)
-        player.numberOfLoops = -1
-        return player
-      } catch {
-        return nil
-      }
+        guard let url = Bundle.main.url(forResource: "menuTheme", withExtension: "mp3") else {
+            return nil
+        }
+        do {
+            let player = try AVAudioPlayer(contentsOf: url)
+            player.numberOfLoops = -1
+            return player
+        } catch {
+            return nil
+        }
     }()
 
     override func viewDidLoad() {
@@ -45,11 +45,11 @@ class MenuViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.identifier {
-            case "levelNumberVC":
+            case "showLevelNumberVC":
                 if let vc = segue.destination as? ChooseLevelViewController {
                     
                     //FIXME: - Should get this list from game folder "Level"
-                    vc.levelList = [1, 2, 3, 4, 5, 6]
+                    vc.levelList = [0, 1, 2, 3, 4, 5]
                 }
             default:
                 break

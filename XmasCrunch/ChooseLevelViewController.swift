@@ -30,7 +30,7 @@ extension ChooseLevelViewController: UITableViewDataSource, UITableViewDelegate 
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "LevelNumber", for: indexPath)
-        let text = "Level " + String(levelList[indexPath.row])
+        let text = "Level " + String(levelList[indexPath.row] + 1)
         
         cell.textLabel?.text = text
         cell.textLabel?.font = UIFont(name: "Chalkduster", size: 26)
